@@ -13,7 +13,7 @@ Contact.destroy_all
 # 1. insert new rows in the contacts table with relationship to a company
 
 # first query to find the row in companies for Apple
-apple = Company.find_by({ "name" => "Apple" })
+apple = Company.find_by({"name" => "Apple"})
 
 contact = Contact.new
 contact["first_name"] = "Tim"

@@ -19,22 +19,43 @@ puts "There are #{Company.all.count} companies"
 # 2. insert new rows in companies table
 new_company = Company.new
 
-puts new_company.inspect
-
 new_company["name"] = "Apple"
 new_company["city"] = "Cupertino"
 new_company["state"] = "CA"
 new_company["url"] = "https:www.apple.com"
 new_company.save
 
+
+
+puts "There are #{Company.all.count} companies"
+
+new_company = Company.new
+new_company["name"] = "Amazon"
+new_company["city"] = "Seattle"
+new_company["state"] = "WA"
+new_company.save
+
 puts "There are #{Company.all.count} companies"
 
 # 3. query companies table to find all row with California company
+all_companies = Company.all
+puts all_companies.count
+
+cali_companies = Company.where({"state" => "CA"})
+puts "Companies in Cali: #{cali_companies.count}"
 
 # 4. query companies table to find single row for Apple
+apple = Company.where({"name" => "Apple"})[0]
 
 # 5. read a row's column value
+puts apple["url"]
 
 # 6. update a row's column value
+amazon = Company.where({"name" => "Amazon"})[0]
+amazon["url"] = "https:www.amazon.com"
+amazon.save
 
 # 7. delete a row
+apple.destroy
+
+puts "There are #{Company.all.count} companies"
